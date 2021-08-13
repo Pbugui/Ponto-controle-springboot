@@ -15,8 +15,13 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("/jornada")
 public class JornadaTrabalhoController {
-    @Autowired
+   
     JornadaService jornadaService;
+    
+    @Autowired
+    public JornadaTrabalhoController(JornadaService jornadaService) {
+        this.jornadaService = jornadaService;
+    }
 
     @PostMapping
     public JornadaTrabalho createJornada(@RequestBody JornadaTrabalho jornadaTrabalho){
