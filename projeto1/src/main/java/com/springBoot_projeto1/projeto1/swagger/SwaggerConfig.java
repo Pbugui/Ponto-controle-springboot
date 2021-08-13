@@ -21,7 +21,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.springBoot_projeto1.projeto1"))
-                .paths(PathSelectors.any())
+                .paths(PathSelectors.ant("/**"))
                 .build()
                 .apiInfo(apiInfo());
     }
@@ -30,10 +30,10 @@ public class SwaggerConfig {
         return new ApiInfo("sistema de controle de ponto de acesso",
                 "API criada como projeto Fullstack Santander",
                 "versão 1.0",
-                "<<<github>>>",
-                new Contact("Pedro Buguui Garcia", "<<<github>>>", "pbugui@gmail.com"),
+                "https://github.com/Pbugui/Ponto-controle-springboot.git",
+                new Contact("Pedro Buguui Garcia", "https://github.com/Pbugui/Ponto-controle-springboot.git", "pbugui@gmail.com"),
                 "Permitido para consulta",
-                "<<<github>>>",
+                "https://github.com/Pbugui/Ponto-controle-springboot.git",
                 Collections.emptyList()
         );
     }

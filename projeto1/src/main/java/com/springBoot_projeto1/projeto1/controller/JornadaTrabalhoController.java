@@ -16,37 +16,41 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/jornada")
-@Api(value = "Jornada trabalho")
-@CrossOrigin(origins = "*")
+@Api(value="API REST Jornada")
+@CrossOrigin(origins="*")
 public class JornadaTrabalhoController {
     @Autowired
     JornadaService jornadaService;
 
     @PostMapping
-    @ApiOperation(value = "post")
+    @ApiOperation(value="Insere um tipo de jornada")
     public JornadaTrabalho createJornada(@RequestBody JornadaTrabalho jornadaTrabalho){
         return jornadaService.saveJornada(jornadaTrabalho);
 
     }
 
     @GetMapping
+    @ApiOperation(value="Lista todas as jornadas")
     public List<JornadaTrabalho> getJornadaList(){
         return jornadaService.findAll();
 
     }
 
     @GetMapping("/{idJornada}")
+    @ApiOperation(value="Lista a jornada selecionada pelo id")
     public ResponseEntity<JornadaTrabalho>  getJornadaByID(@PathVariable("idJornada") Long idJornada) throws Exception {
         return  ResponseEntity.ok(jornadaService.getById(idJornada).orElseThrow(() -> new NoSuchElementException("Not found!")));
 
     }
 
     @PutMapping
+    @ApiOperation(value="Atualiza uma jornada")
     public JornadaTrabalho updateJornada(@RequestBody JornadaTrabalho jornadaTrabalho){
         return jornadaService.updateJornada(jornadaTrabalho);
     }
 
     @DeleteMapping("/{idJornada}")
+    @ApiOperation(value="Deleta a jornada selecionada pelo id")
     public ResponseEntity deleteByID(@PathVariable("idJornada") Long idJornada) throws Exception {
         try {
             jornadaService.deleteJornada(idJornada);
