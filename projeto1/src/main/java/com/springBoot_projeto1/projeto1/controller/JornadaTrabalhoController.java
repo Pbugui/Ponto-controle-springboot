@@ -4,6 +4,8 @@ package com.springBoot_projeto1.projeto1.controller;
 
 import com.springBoot_projeto1.projeto1.model.JornadaTrabalho;
 import com.springBoot_projeto1.projeto1.service.JornadaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +16,15 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/jornada")
+@Api(value = "Jornada trabalho")
+@CrossOrigin(origins = "*")
 public class JornadaTrabalhoController {
     @Autowired
     JornadaService jornadaService;
 
     @PostMapping
+    @ApiOperation(value = "post")
     public JornadaTrabalho createJornada(@RequestBody JornadaTrabalho jornadaTrabalho){
-
         return jornadaService.saveJornada(jornadaTrabalho);
 
     }
