@@ -1,16 +1,14 @@
 package com.springBoot_projeto1.projeto1.controller;
 
-
-
 import com.springBoot_projeto1.projeto1.model.JornadaTrabalho;
 import com.springBoot_projeto1.projeto1.service.JornadaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -24,14 +22,14 @@ public class JornadaTrabalhoController {
 
     @PostMapping
     @ApiOperation(value="Insere um tipo de jornada")
-    public JornadaTrabalho createJornada(@RequestBody JornadaTrabalho jornadaTrabalho){
+    public JornadaTrabalho createJornada(@RequestBody JornadaTrabalho jornadaTrabalho) {
         return jornadaService.saveJornada(jornadaTrabalho);
 
     }
 
-    @GetMapping
+    @GetMapping("/list")
     @ApiOperation(value="Lista todas as jornadas")
-    public List<JornadaTrabalho> getJornadaList(){
+    public List<JornadaTrabalho> getJornadaList() {
         return jornadaService.findAll();
 
     }
@@ -39,7 +37,7 @@ public class JornadaTrabalhoController {
     @GetMapping("/{idJornada}")
     @ApiOperation(value="Lista a jornada selecionada pelo id")
     public ResponseEntity<JornadaTrabalho>  getJornadaByID(@PathVariable("idJornada") Long idJornada) throws Exception {
-        return  ResponseEntity.ok(jornadaService.getById(idJornada).orElseThrow(() -> new NoSuchElementException("Not found!")));
+        return  ResponseEntity.ok(jornadaService.getById(idJornada).orElseThrow(() -> new NoSuchElementException("Not found!" + HttpStatus.NOT_FOUND)));
 
     }
 
@@ -60,7 +58,5 @@ public class JornadaTrabalhoController {
         return (ResponseEntity<JornadaTrabalho>) ResponseEntity.ok();
 
     }
-
-
 
 }

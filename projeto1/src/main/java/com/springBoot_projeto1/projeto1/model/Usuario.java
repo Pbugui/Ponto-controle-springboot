@@ -2,9 +2,7 @@ package com.springBoot_projeto1.projeto1.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -18,6 +16,7 @@ import java.time.LocalDateTime;
 public class Usuario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long                id;
     @ManyToOne
     private CategoriaUsuario    categoriaUsuario;

@@ -14,9 +14,8 @@ import javax.persistence.*;
 public class JornadaTrabalho {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long   id;
-    @Column
     private String  descricao;
 
 

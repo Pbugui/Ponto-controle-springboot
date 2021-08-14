@@ -2,9 +2,7 @@ package com.springBoot_projeto1.projeto1.model;
 
 import lombok.*;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,21 +13,23 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
+@Entity
 public class BancoHoras {
 
-    @AllArgsConstructor
-    @NoArgsConstructor
     @EqualsAndHashCode
     @Embeddable
-    public class BancoHorasId implements Serializable {
-        private Long idBancoHoras;
-        private Long idMovimentacao;
-        private Long idUsuario;
-    }
+    @Getter
+    @Setter
+    public  class BancoHorasId implements Serializable{
+        private long idBancoHoras;
+        private long idMovimentacao;
+        private long idUsuario;
 
+
+    }
     @Id
-    @Embedded
-    private BancoHorasId id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EmbeddedId
     private BancoHorasId bancoHorasId;
     private LocalDateTime dataTrabalhada;
     private BigDecimal quantidadeHoras;
