@@ -3,10 +3,7 @@ package com.springBoot_projeto1.projeto1.model;
 import lombok.*;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -20,6 +17,7 @@ public class NivelAcesso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long    id;
+    @Column
     private String  descricao;
 
 }

@@ -32,8 +32,8 @@ public class Movimentacao {
     private LocalDateTime   dataEntrada;
     private LocalDateTime   dataSaida;
     private BigDecimal      periodo;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Ocorrencia      ocorrencia;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private Calendario      calendario;
 }

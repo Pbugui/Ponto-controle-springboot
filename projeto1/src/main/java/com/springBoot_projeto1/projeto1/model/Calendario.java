@@ -17,7 +17,7 @@ public class Calendario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long        id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private TipoData        tipoData;
     private String          descricao;
     private LocalDateTime   dataEspecial;

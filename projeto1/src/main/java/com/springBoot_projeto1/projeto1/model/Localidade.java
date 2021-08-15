@@ -16,7 +16,7 @@ public class Localidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long        id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private NivelAcesso nivelAcesso;
     private String      descricao;
 }
